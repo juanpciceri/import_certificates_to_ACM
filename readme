@@ -1,0 +1,8 @@
+""" 
+This script uses boto3 library from python, it allows an external user that does not have AWS console access
+to import certificates to an AWS account if he has regular CLI access keys and proper role to interact with AWS certificate manager. 
+Progam will ask to input three times, the first time user must input the .pem body, the second one, user must input  .key body and 
+finally the third one user must include .crt body. The program will return the ARN of the certificate.
+
+you must have a computer with python3 installed and boto3 in order to run this script sucessfully.
+"""

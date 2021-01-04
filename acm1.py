@@ -1,6 +1,13 @@
+""" 
+This script uses boto3 library from python, it allows an external user that does not have AWS console access
+to import certificates to an AWS account if he has regular CLI access keys and proper role to interact with AWS certificate manager. 
+Progam will ask to input three times, the first time user must input the .pem body, the second one, user must input  .key body and 
+finally the third one user must include .crt body. The program will return the ARN of the certificate.
+
+"""
 import boto3
 import sys
-print('Pegue el cuerpo del certificado.Presiona una vez enter, luego presiona Ctrl-D para guardar.')
+print('Paste body certificate -must be PEM hardcoded).to continue, press one time enter and then Ctrl-D to save.')
 contents = []
 while True:
     try:
@@ -12,7 +19,7 @@ certificate = '\n'.join([str(elem) for elem in contents])
 #f=open('/home/utilunix/certificate_load/file.txt','a+')
 #f.write(certificate)
 #f.close
-print('Pegue la clave privada del certificado.Presiona una vez enter, luego presiona  Ctrl-D para guardar.')
+print('Paste certificate private keys -must be PEM hardcoded).to continue, press one time enter and then Ctrl-D to save.')
 keys = []
 while True:
     try:
@@ -21,7 +28,7 @@ while True:
         break
     keys.append(line)
 privateKey= '\n'.join([str(elem) for elem in keys])
-print('Pegue la cadena de certificados.Presiona una vez enter, luego presiona  Ctrl-D para guardar.')
+print('Paste certificate chain -must be PEM hardcoded).to continue, press one time enter and then Ctrl-D to save.')
 chains = []
 while True:
     try:
